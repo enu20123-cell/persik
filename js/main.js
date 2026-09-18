@@ -148,12 +148,23 @@ if (analyzeForm) {
         throw new Error(data.error || `Ошибка сервера (${res.status})`);
       }
 
+      const winRate = clampPct(data.win_rate);
       demoResult.innerHTML = `
-        <p class="demo-diagnosis">${escapeHtml(data.diagnosis || '')}</p>
-        <div class="demo-winrate">
-          <strong>${clampPct(data.win_rate)}%</strong>
-          <span>Win Rate портфеля</span>
+        <div class="demo-block">
+          <div class="demo-block-icon">🧭</div>
+          <div>
+            <p class="demo-block-label">Диагноз портфеля</p>
+            <p class="demo-diagnosis">${escapeHtml(data.diagnosis || '')}</p>
+          </div>
         </div>
+        <div class="demo-winrate-block">
+          <div class="demo-winrate-ring" style="--pct:${winRate}"><span>${winRate}%</span></div>
+          <div>
+            <p class="demo-block-label">Win Rate портфеля</p>
+            <p class="demo-winrate-sub">Вероятность успеха по модели активов</p>
+          </div>
+        </div>
+        <p class="demo-section-title">Портфель активов</p>
         <div class="demo-assets">${renderAssets(data.assets)}</div>
         ${data.next_step ? `<div class="demo-next">🎯 <strong>Ближайший шаг:</strong> ${escapeHtml(data.next_step)}</div>` : ''}
       `;
