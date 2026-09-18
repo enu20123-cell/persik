@@ -26,6 +26,7 @@
       <a href="#assets">Активы</a>
       <a href="#metrics">Метрики</a>
       <a href="#journey">Путь пользователя</a>
+      <a href="#demo">AI-демо</a>
       <a href="#strategies">Стратегии</a>
       <a href="#why">Почему это работает</a>
     </nav>
@@ -303,6 +304,57 @@
           </div>
         </li>
       </ol>
+    </div>
+  </section>
+
+  <!-- DEMO -->
+  <section id="demo" class="section">
+    <div class="container">
+      <p class="section-tag">05.5 · AI-демо</p>
+      <h2>Инвесторская анкета: соберите портфель прямо сейчас</h2>
+      <p class="section-lead">
+        Заполните профиль — Gemini рассчитает диагностику, Win Rate и рекомендованные активы.
+        Требуется запущенный локальный backend (см. README).
+      </p>
+
+      <div class="demo-grid">
+        <form id="analyzeForm" class="panel demo-form">
+          <div class="form-row">
+            <label for="grade">Класс / возраст</label>
+            <input id="grade" name="grade" type="text" placeholder="11 класс" required>
+          </div>
+          <div class="form-row">
+            <label for="gpa">Средний балл (GPA)</label>
+            <input id="gpa" name="gpa" type="text" placeholder="4.6 / 5.0" required>
+          </div>
+          <div class="form-row">
+            <label for="language_level">Уровень языка</label>
+            <input id="language_level" name="language_level" type="text" placeholder="IELTS 6.5" required>
+          </div>
+          <div class="form-row">
+            <label for="budget">Бюджет</label>
+            <input id="budget" name="budget" type="text" placeholder="$15 000 / год" required>
+          </div>
+          <div class="form-row">
+            <label for="hours_per_week">Часы в неделю</label>
+            <input id="hours_per_week" name="hours_per_week" type="text" placeholder="12" required>
+          </div>
+          <div class="form-row">
+            <label for="target_country">Целевая страна</label>
+            <input id="target_country" name="target_country" type="text" placeholder="Германия" required>
+          </div>
+          <div class="form-row form-row-full">
+            <label for="target_field">Целевая специальность</label>
+            <input id="target_field" name="target_field" type="text" placeholder="Computer Science" required>
+          </div>
+          <button type="submit" class="btn btn-primary" id="analyzeBtn">Проанализировать портфель</button>
+          <p class="demo-hint" id="demoHint">Backend: <code>http://localhost:5001</code></p>
+        </form>
+
+        <div class="panel demo-result" id="demoResult">
+          <p class="demo-placeholder">Здесь появится диагностика профиля, Win Rate и рекомендованные активы.</p>
+        </div>
+      </div>
     </div>
   </section>
 

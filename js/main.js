@@ -83,3 +83,94 @@ const rrIO = new IntersectionObserver((entries) => {
 }, { threshold: 0.3 });
 
 rrBars.forEach(el => rrIO.observe(el));
+
+// AI analysis demo (calls local Flask + Gemini backend)
+const ANALYZE_URL = 'http://localhost:5001/api/analyze';
+const analyzeForm = document.getElementById('analyzeForm');
+const demoResult = document.getElementById('demoResult');
+const analyzeBtn = document.getElementById('analyzeBtn');
+
+const ASSET_LABELS = {
+  core: 'Базовый актив',
+  growth: 'Актив роста',
+  high_yield: 'Высокодоходный актив',
+  hedge: 'Защитный актив',
+};
+
+function renderAssets(assets) {
+  if (!Array.isArray(assets)) return '';
+  return assets.map(a => `
+    <div class="demo-asset type-${a.type || 'core'}">
+      <div class="demo-asset-head">
+        <b>${escapeHtml(a.name || '—')}</b>
+        <span>${ASSET_LABELS[a.type] || a.type || ''}</span>
+      </div>
+      <p>${escapeHtml(a.reason || '')}</p>
+      <div class="rr-meter">
+        <div class="rr-row"><span>Риск</span><div class="rr-bar"><span style="width:${clampPct(a.risk)}%"></span></div></div>
+        <div class="rr-row"><span>ROE</span><div class="rr-bar"><span style="width:${clampPct(a.roe)}%"></span></div></div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function clampPct(v) {
+  const n = Number(v);
+  if (Number.isNaN(n)) return 0;
+  return Math.max(0, Math.min(100, n));
+}
+
+function escapeHtml(str) {
+  const div = document.createElement('div');
+  div.textContent = String(str);
+  return div.innerHTML;
+}
+
+if (analyzeForm) {
+  analyzeForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const formData = new FormData(analyzeForm);
+    const profile = Object.fromEntries(formData.entries());
+
+    analyzeBtn.disabled = true;
+    analyzeBtn.textContent = 'Анализирую…';
+    demoResult.innerHTML = '<p class="demo-placeholder">Gemini считает риск и доходность портфеля…</p>';
+
+    try {
+      const res = await fetch(ANALYZE_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(profile),
+      });
+      const data = await res.json();
+
+      if (!res.ok) {
+        throw new Error(data.error || `Ошибка сервера (${res.status})`);
+      }
+
+      demoResult.innerHTML = `
+        <p class="demo-diagnosis">${escapeHtml(data.diagnosis || '')}</p>
+        <div class="demo-winrate">
+          <strong>${clampPct(data.win_rate)}%</strong>
+          <span>Win Rate портфеля</span>
+        </div>
+        <div class="demo-assets">${renderAssets(data.assets)}</div>
+        ${data.next_step ? `<div class="demo-next">🎯 <strong>Ближайший шаг:</strong> ${escapeHtml(data.next_step)}</div>` : ''}
+      `;
+      demoResult.querySelectorAll('.rr-bar > span').forEach(el => {
+        const w = el.style.width;
+        el.style.width = '0%';
+        requestAnimationFrame(() => { el.style.width = w; });
+      });
+    } catch (err) {
+      demoResult.innerHTML = `
+        <p class="demo-error">
+          Не удалось получить анализ: ${escapeHtml(err.message)}.<br>
+          Убедитесь, что backend запущен (<code>python backend/app.py</code>) и в <code>.env</code> указан GEMINI_API_KEY.
+        </p>`;
+    } finally {
+      analyzeBtn.disabled = false;
+      analyzeBtn.textContent = 'Проанализировать портфель';
+    }
+  });
+}

@@ -16,7 +16,7 @@
 - Сравнение стратегий («Агрессивная» vs «Сбалансированная»)
 - Почему идея работает для хакатона
 
-## Запуск
+## Запуск фронтенда
 
 Статический сайт, зависимостей нет. Просто открыть [index.html](index.html) в браузере,
 либо поднять локальный сервер:
@@ -27,6 +27,24 @@ npx serve .
 
 или включить GitHub Pages для этого репозитория (branch `main`, root).
 
+## Запуск AI-backend (раздел «AI-демо»)
+
+Секция «AI-демо» на сайте отправляет анкету абитуриента на локальный Flask-сервер,
+который вызывает Gemini и возвращает диагностику, Win Rate и рекомендованные активы.
+
+```bash
+cd backend
+python -m venv .venv
+source .venv/Scripts/activate   # Windows: .venv\Scripts\activate
+pip install -r requirements.txt
+
+cp ../.env.example ../.env      # затем впишите свой ключ в .env
+python app.py                   # поднимется на http://localhost:5001
+```
+
+`.env` не коммитится в репозиторий (см. `.gitignore`) — ключ Gemini хранится только локально.
+
 ## Стек
 
-Чистые HTML / CSS / JS, без сборщиков и внешних библиотек.
+- Frontend: чистые HTML / CSS / JS, без сборщиков и внешних библиотек
+- Backend: Python (Flask) + Gemini API (`google-generativeai`)
