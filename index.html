@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Education Portfolio AI — Инвестируй в своё образование</title>
+<meta name="description" content="Education Portfolio AI переносит методологию управления инвестициями на планирование образования и карьеры: активы, риск, доходность, дорожная карта.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎓</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="bg-grid" aria-hidden="true"></div>
+
+<header class="site-header" id="top">
+  <div class="container header-inner">
+    <a class="brand" href="#top">
+      <span class="brand-mark">◈</span>
+      <span>Education <em>Portfolio</em> AI</span>
+    </a>
+    <nav class="main-nav" aria-label="Основная навигация">
+      <a href="#problem">Проблема</a>
+      <a href="#assets">Активы</a>
+      <a href="#metrics">Метрики</a>
+      <a href="#journey">Путь пользователя</a>
+      <a href="#strategies">Стратегии</a>
+      <a href="#why">Почему это работает</a>
+    </nav>
+    <a class="btn btn-ghost nav-cta" href="#cta">Собрать портфель</a>
+    <button class="nav-toggle" id="navToggle" aria-label="Открыть меню" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<main>
+
+  <!-- HERO -->
+  <section class="hero container">
+    <div class="hero-copy">
+      <p class="eyebrow">AI-платформа для абитуриентов и родителей</p>
+      <h1>Образование — это не ставка.<br>Это <span class="grad-text">портфель</span>.</h1>
+      <p class="hero-lead">
+        Education Portfolio переносит методологию управления инвестициями на планирование
+        поступления и карьеры. Вместо одной рискованной ставки на «мечту-ВУЗ» — сбалансированный
+        набор активов с понятной стоимостью, риском и доходностью.
+      </p>
+      <div class="hero-actions">
+        <a href="#journey" class="btn btn-primary">Смотреть, как это работает</a>
+        <a href="#assets" class="btn btn-outline">Классы активов</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat"><span class="stat-num" data-count="4">0</span><span class="stat-label">класса активов</span></div>
+        <div class="stat"><span class="stat-num" data-count="4">0</span><span class="stat-label">AI-метрики риска и доходности</span></div>
+        <div class="stat"><span class="stat-num" data-count="7">0</span><span class="stat-label">шагов пользовательского пути</span></div>
+      </div>
+    </div>
+
+    <div class="hero-visual" aria-hidden="true">
+      <div class="panel portfolio-card">
+        <div class="panel-head">
+          <span>Мой образовательный портфель</span>
+          <span class="pill pill-live">live</span>
+        </div>
+        <div class="donut-wrap">
+          <svg viewBox="0 0 200 200" class="donut">
+            <circle cx="100" cy="100" r="80" class="donut-seg seg-core" pathLength="100" stroke-dasharray="35 65" stroke-dashoffset="0"></circle>
+            <circle cx="100" cy="100" r="80" class="donut-seg seg-growth" pathLength="100" stroke-dasharray="25 75" stroke-dashoffset="-35"></circle>
+            <circle cx="100" cy="100" r="80" class="donut-seg seg-highyield" pathLength="100" stroke-dasharray="20 80" stroke-dashoffset="-60"></circle>
+            <circle cx="100" cy="100" r="80" class="donut-seg seg-hedge" pathLength="100" stroke-dasharray="20 80" stroke-dashoffset="-80"></circle>
+          </svg>
+          <div class="donut-center">
+            <strong>72%</strong>
+            <span>Win Rate</span>
+          </div>
+        </div>
+        <ul class="legend">
+          <li><i class="dot dot-core"></i>Базовые ВУЗы <b>35%</b></li>
+          <li><i class="dot dot-growth"></i>Стажировки/проекты <b>25%</b></li>
+          <li><i class="dot dot-highyield"></i>Олимпиады <b>20%</b></li>
+          <li><i class="dot dot-hedge"></i>Курсы/сертификаты <b>20%</b></li>
+        </ul>
+      </div>
+
+      <div class="panel float-card float-1">
+        <span class="mini-label">ROE актива</span>
+        <strong class="mini-value up">+38%</strong>
+        <span class="mini-sub">к шансам поступления</span>
+      </div>
+      <div class="panel float-card float-2">
+        <span class="mini-label">Риск</span>
+        <div class="risk-bar"><span style="width:62%"></span></div>
+        <span class="mini-sub">Международная олимпиада</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROBLEM -->
+  <section id="problem" class="section">
+    <div class="container">
+      <p class="section-tag">01 · Проблематика</p>
+      <h2>Поступление превратилось в информационный хаос</h2>
+      <p class="section-lead">Абитуриенты и их родители тонут в тысячах ВУЗов, курсов, олимпиад и стажировок —
+        без единого инструмента, который собирал бы всё это в стратегию.</p>
+
+      <div class="grid grid-3">
+        <div class="card">
+          <div class="card-icon">🌐</div>
+          <h3>Информационный парадокс</h3>
+          <p>Тысячи ВУЗов, курсов, олимпиад и стажировок — но нет инструмента, который увязывает их в единый стратегический вектор.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">➡️</div>
+          <h3>Линейность мышления</h3>
+          <p>Большинство сервисов предлагают простую цепочку «Школа → ВУЗ», игнорируя олимпиады, проекты и курсы как равноправные активы траектории.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">⚖️</div>
+          <h3>Отсутствие оценки рисков</h3>
+          <p>Ученики выбирают либо слишком амбициозные цели (высокий риск провала), либо слишком консервативные (нераскрытый потенциал).</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONCEPT -->
+  <section class="section section-concept">
+    <div class="container concept-inner">
+      <div>
+        <p class="section-tag">02 · Концепция</p>
+        <h2>Что если применить логику инвест-портфеля к образованию?</h2>
+        <p class="section-lead">
+          В финансовом портфеле есть акции, облигации и недвижимость. Education Portfolio AI
+          предлагает пользователю собрать <strong>сбалансированный образовательный портфель</strong>,
+          где каждый элемент — актив с понятной стоимостью, риском и отдачей. Вместо одной ставки
+          на один ВУЗ — диверсифицированная стратегия поступления и развития.
+        </p>
+      </div>
+      <div class="quote-block">
+        <p>«Инвестируй в своё будущее грамотно» — философия платформы вместо стресса
+        «куда же мне поступить?»</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ASSETS -->
+  <section id="assets" class="section">
+    <div class="container">
+      <p class="section-tag">03 · Классификация активов</p>
+      <h2>Четыре класса образовательных активов</h2>
+      <p class="section-lead">Каждый актив в портфеле выполняет свою роль — от фундамента до защиты от риска.</p>
+
+      <div class="grid grid-4">
+        <div class="card asset-card asset-core">
+          <div class="asset-head">
+            <span class="asset-icon">🏛️</span>
+            <span class="asset-tag">Core Assets</span>
+          </div>
+          <h3>Базовые активы</h3>
+          <p class="asset-sub">Целевые университеты / факультеты</p>
+          <p>Фундамент портфеля. Дают долгосрочную капитализацию: диплом, нетворкинг, бренд.</p>
+          <div class="rr-meter">
+            <div class="rr-row"><span>Риск</span><div class="rr-bar"><span style="width:30%"></span></div></div>
+            <div class="rr-row"><span>Доходность</span><div class="rr-bar"><span style="width:55%"></span></div></div>
+          </div>
+        </div>
+
+        <div class="card asset-card asset-growth">
+          <div class="asset-head">
+            <span class="asset-icon">🚀</span>
+            <span class="asset-tag">Growth Assets</span>
+          </div>
+          <h3>Активы роста</h3>
+          <p class="asset-sub">Стажировки, исследования, соц. проекты</p>
+          <p>Повышают уникальность профиля, дают сильный буст при поступлении на топ-программы или при найме.</p>
+          <div class="rr-meter">
+            <div class="rr-row"><span>Риск</span><div class="rr-bar"><span style="width:45%"></span></div></div>
+            <div class="rr-row"><span>Доходность</span><div class="rr-bar"><span style="width:70%"></span></div></div>
+          </div>
+        </div>
+
+        <div class="card asset-card asset-highyield">
+          <div class="asset-head">
+            <span class="asset-icon">🏆</span>
+            <span class="asset-tag">High-Yield</span>
+          </div>
+          <h3>Высокодоходные активы</h3>
+          <p class="asset-sub">Олимпиады и хакатоны</p>
+          <p>Высокий риск не занять место, но при успехе — 100% гарантия поступления (БВИ) или грант.</p>
+          <div class="rr-meter">
+            <div class="rr-row"><span>Риск</span><div class="rr-bar"><span style="width:85%"></span></div></div>
+            <div class="rr-row"><span>Доходность</span><div class="rr-bar"><span style="width:95%"></span></div></div>
+          </div>
+        </div>
+
+        <div class="card asset-card asset-hedge">
+          <div class="asset-head">
+            <span class="asset-icon">🛡️</span>
+            <span class="asset-tag">Hedge Assets</span>
+          </div>
+          <h3>Защитные активы</h3>
+          <p class="asset-sub">Курсы, сертификации, языковые экзамены</p>
+          <p>Снижают академические риски, подтягивают слабые стороны профиля: IELTS/TOEFL, профильная математика.</p>
+          <div class="rr-meter">
+            <div class="rr-row"><span>Риск</span><div class="rr-bar"><span style="width:18%"></span></div></div>
+            <div class="rr-row"><span>Доходность</span><div class="rr-bar"><span style="width:40%"></span></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- METRICS -->
+  <section id="metrics" class="section section-dark">
+    <div class="container">
+      <p class="section-tag">04 · AI-аналитика</p>
+      <h2>4 инвестиционные метрики для каждого актива</h2>
+      <p class="section-lead">Алгоритмы ИИ оценивают каждый актив и портфель целиком, объясняя каждую рекомендацию.</p>
+
+      <div class="grid grid-4">
+        <div class="metric-card">
+          <span class="metric-icon">💰</span>
+          <h3>Стоимость и усилия</h3>
+          <p>Capital &amp; Effort — финансовая стоимость (оплата, курсы, взносы) и время: часы в неделю на подготовку.</p>
+        </div>
+        <div class="metric-card">
+          <span class="metric-icon">🎯</span>
+          <h3>Вероятность успеха</h3>
+          <p>Win Rate — рассчитывается по текущему профилю: GPA, уровень языка, имеющиеся дипломы.</p>
+        </div>
+        <div class="metric-card">
+          <span class="metric-icon">📈</span>
+          <h3>Доходность (ROE)</h3>
+          <p>Return on Education — насколько актив продвигает к цели: прирост шансов поступления, влияние на зарплату.</p>
+        </div>
+        <div class="metric-card">
+          <span class="metric-icon">⚡</span>
+          <h3>Уровень риска</h3>
+          <p>Academic Volatility — конкурс, жёсткость отбора и субъективность критериев оценивания.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- USER JOURNEY -->
+  <section id="journey" class="section">
+    <div class="container">
+      <p class="section-tag">05 · User Journey</p>
+      <h2>Путь пользователя внутри портфеля</h2>
+      <p class="section-lead">Семь шагов — от философии до конкретного дедлайна в календаре.</p>
+
+      <ol class="journey">
+        <li>
+          <span class="journey-num">1</span>
+          <div>
+            <h3>Вход и философия</h3>
+            <p>Знакомство с концепцией «Инвестируй в своё будущее грамотно».</p>
+          </div>
+        </li>
+        <li>
+          <span class="journey-num">2</span>
+          <div>
+            <h3>Инвесторская анкета</h3>
+            <p>Сбор «начального капитала»: класс/возраст, академические результаты, бюджет, часы в неделю, целевая страна.</p>
+          </div>
+        </li>
+        <li>
+          <span class="journey-num">3</span>
+          <div>
+            <h3>Диагностика</h3>
+            <p>ИИ оценивает профиль: «Высокий потенциал в точных науках, но высокий риск из-за отсутствия внеучебной активности».</p>
+          </div>
+        </li>
+        <li>
+          <span class="journey-num">4</span>
+          <div>
+            <h3>Рекомендации активов</h3>
+            <p>ИИ предлагает конкретные ВУЗы, олимпиады и курсы, объясняя роль каждого в портфеле.</p>
+          </div>
+        </li>
+        <li>
+          <span class="journey-num">5</span>
+          <div>
+            <h3>Сравнение стратегий</h3>
+            <p>Пользователь сравнивает 2–3 сборки портфеля — от агрессивной до сбалансированной.</p>
+          </div>
+        </li>
+        <li>
+          <span class="journey-num">6</span>
+          <div>
+            <h3>Дорожная карта</h3>
+            <p>Пошаговый календарный план: дедлайны подачи документов, даты олимпиад, сдача экзаменов.</p>
+          </div>
+        </li>
+        <li>
+          <span class="journey-num">7</span>
+          <div>
+            <h3>Ближайший шаг</h3>
+            <p>«Зарегистрироваться на Олимпиаду X до 15 октября для защиты портфеля».</p>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- STRATEGIES -->
+  <section id="strategies" class="section section-dark">
+    <div class="container">
+      <p class="section-tag">06 · Сравнение стратегий</p>
+      <h2>Одна цель — разные конструкции портфеля</h2>
+
+      <div class="grid grid-2 strategy-grid">
+        <div class="strategy-card strategy-aggressive">
+          <div class="strategy-head">
+            <h3>Агрессивная</h3>
+            <span class="pill pill-risk">высокий риск</span>
+          </div>
+          <p>Топ-ВУЗы за рубежом + сложные международные олимпиады — максимальный ROE, но и максимальная волатильность.</p>
+          <div class="rr-meter">
+            <div class="rr-row"><span>Риск</span><div class="rr-bar"><span style="width:90%"></span></div></div>
+            <div class="rr-row"><span>ROE</span><div class="rr-bar"><span style="width:95%"></span></div></div>
+          </div>
+        </div>
+        <div class="strategy-card strategy-balanced">
+          <div class="strategy-head">
+            <h3>Сбалансированная</h3>
+            <span class="pill pill-safe">умеренный риск</span>
+          </div>
+          <p>Целевой ВУЗ + 2 олимпиады для подстраховки + сертификационные курсы — устойчивый рост шансов.</p>
+          <div class="rr-meter">
+            <div class="rr-row"><span>Риск</span><div class="rr-bar"><span style="width:40%"></span></div></div>
+            <div class="rr-row"><span>ROE</span><div class="rr-bar"><span style="width:68%"></span></div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="explain-box">
+        <span class="explain-icon">💡</span>
+        <p><strong>Explainable AI:</strong> пользователь видит, <em>почему</em> ИИ рекомендует конкретную олимпиаду —
+        она снижает риск непоступления в целевой ВУЗ с <b>70%</b> до <b>20%</b>.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY -->
+  <section id="why" class="section">
+    <div class="container">
+      <p class="section-tag">07 · Почему это работает</p>
+      <h2>Почему идея эффективна для хакатона и продукта</h2>
+
+      <div class="grid grid-4">
+        <div class="card why-card">
+          <div class="card-icon">🧠</div>
+          <h3>Mindset Shift</h3>
+          <p>Вместо стресса «куда же мне поступить?» — понятный аналитический процесс управления своим развитием.</p>
+        </div>
+        <div class="card why-card">
+          <div class="card-icon">🔍</div>
+          <h3>Explainable AI</h3>
+          <p>Пользователь понимает, почему ИИ рекомендует именно этот актив, и как он меняет вероятность успеха.</p>
+        </div>
+        <div class="card why-card">
+          <div class="card-icon">🔄</div>
+          <h3>Гибкость и динамичность</h3>
+          <p>При изменении бюджета или баллов портфель мгновенно пересчитывается, перераспределяя риски.</p>
+        </div>
+        <div class="card why-card">
+          <div class="card-icon">📊</div>
+          <h3>UX/UI из мира финансов</h3>
+          <p>Дашборды, графики риска/доходности и прогресс-бары — современно, структурировано, легко воспринимается.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section id="cta" class="section cta-section">
+    <div class="container cta-inner">
+      <h2>Готовы собрать свой первый образовательный портфель?</h2>
+      <p>Демо-прототип создан для хакатона — концепция «Education Portfolio AI».</p>
+      <a href="#top" class="btn btn-primary btn-lg">Вернуться к началу</a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <div>
+      <span class="brand"><span class="brand-mark">◈</span> Education Portfolio AI</span>
+      <p>Образование как инвест-портфель. Проект для хакатона, 2026.</p>
+    </div>
+    <div class="footer-links">
+      <a href="#problem">Проблема</a>
+      <a href="#assets">Активы</a>
+      <a href="#journey">Путь пользователя</a>
+      <a href="#why">Почему это работает</a>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>
