@@ -3,7 +3,7 @@ import os
 import re
 
 from dotenv import load_dotenv
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request, send_from_directory
 from flask_cors import CORS
 
 import google.generativeai as genai
@@ -11,13 +11,13 @@ import google.generativeai as genai
 load_dotenv()
 
 API_KEY = os.environ.get("GEMINI_API_KEY")
-if not API_KEY:
-    raise RuntimeError("GEMINI_API_KEY is not set. Copy .env.example to .env and fill it in.")
-
-genai.configure(api_key=API_KEY)
+if API_KEY:
+    genai.configure(api_key=API_KEY)
 MODEL_NAME = os.environ.get("GEMINI_MODEL", "gemini-flash-latest")
 
-app = Flask(__name__)
+FRONTEND_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+
+app = Flask(__name__, static_folder=None)
 CORS(app)
 
 ASSET_TYPES = ["core", "growth", "high_yield", "hedge"]
@@ -71,6 +71,9 @@ def extract_json(text: str) -> dict:
 
 @app.route("/api/analyze", methods=["POST"])
 def analyze():
+    if not API_KEY:
+        return jsonify({"error": "GEMINI_API_KEY is not configured on the server."}), 500
+
     profile = request.get_json(silent=True) or {}
 
     required = ["grade", "gpa", "language_level", "budget", "hours_per_week", "target_country", "target_field"]
@@ -94,8 +97,20 @@ def analyze():
 
 @app.route("/api/health", methods=["GET"])
 def health():
-    return jsonify({"status": "ok", "model": MODEL_NAME})
+    return jsonify({"status": "ok", "model": MODEL_NAME, "gemini_configured": bool(API_KEY)})
+
+
+@app.route("/")
+def index():
+    return send_from_directory(FRONTEND_DIR, "index.html")
+
+
+@app.route("/<path:path>")
+def static_files(path):
+    return send_from_directory(FRONTEND_DIR, path)
 
 
 if __name__ == "__main__":
-    app.run(debug=True, port=5001)
+    port = int(os.environ.get("PORT", 5001))
+    debug = os.environ.get("FLASK_DEBUG") == "1"
+    app.run(host="0.0.0.0", port=port, debug=debug)

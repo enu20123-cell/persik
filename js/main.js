@@ -85,7 +85,7 @@ const rrIO = new IntersectionObserver((entries) => {
 rrBars.forEach(el => rrIO.observe(el));
 
 // AI analysis demo (calls local Flask + Gemini backend)
-const ANALYZE_URL = 'http://localhost:5001/api/analyze';
+const ANALYZE_URL = '/api/analyze';
 const analyzeForm = document.getElementById('analyzeForm');
 const demoResult = document.getElementById('demoResult');
 const analyzeBtn = document.getElementById('analyzeBtn');

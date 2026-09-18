@@ -16,21 +16,9 @@
 - Сравнение стратегий («Агрессивная» vs «Сбалансированная»)
 - Почему идея работает для хакатона
 
-## Запуск фронтенда
+## Запуск локально
 
-Статический сайт, зависимостей нет. Просто открыть [index.html](index.html) в браузере,
-либо поднять локальный сервер:
-
-```bash
-npx serve .
-```
-
-или включить GitHub Pages для этого репозитория (branch `main`, root).
-
-## Запуск AI-backend (раздел «AI-демо»)
-
-Секция «AI-демо» на сайте отправляет анкету абитуриента на локальный Flask-сервер,
-который вызывает Gemini и возвращает диагностику, Win Rate и рекомендованные активы.
+Flask-сервер раздаёт и статический фронтенд, и `/api/*` — поднимать нужно только один процесс.
 
 ```bash
 cd backend
@@ -38,13 +26,29 @@ python -m venv .venv
 source .venv/Scripts/activate   # Windows: .venv\Scripts\activate
 pip install -r requirements.txt
 
-cp ../.env.example ../.env      # затем впишите свой ключ в .env
+cp ../.env.example ../.env      # впишите свой GEMINI_API_KEY в .env
 python app.py                   # поднимется на http://localhost:5001
 ```
 
+Откройте `http://localhost:5001` — увидите и лендинг, и рабочую секцию «AI-демо».
 `.env` не коммитится в репозиторий (см. `.gitignore`) — ключ Gemini хранится только локально.
+
+Без backend'а сайт тоже можно открыть как статику (просто [index.html](index.html) в браузере
+или `npx serve .`) — тогда всё, кроме секции «AI-демо», работает как обычно.
+
+## Деплой на Render
+
+В репозитории есть `render.yaml` (Blueprint) — один web-сервис на Python, который отдаёт
+и фронтенд, и `/api/analyze`.
+
+1. На [dashboard.render.com](https://dashboard.render.com) → **New** → **Blueprint** → выбрать этот репозиторий.
+2. Render прочитает `render.yaml` и создаст сервис `education-portfolio-ai` (root: `backend`,
+   `gunicorn app:app`, план Free).
+3. В настройках сервиса → **Environment** задать `GEMINI_API_KEY` (не коммитится, только через Render UI).
+4. Дождаться деплоя — сайт будет доступен по адресу вида `https://education-portfolio-ai.onrender.com`.
 
 ## Стек
 
 - Frontend: чистые HTML / CSS / JS, без сборщиков и внешних библиотек
-- Backend: Python (Flask) + Gemini API (`google-generativeai`)
+- Backend: Python (Flask + gunicorn) + Gemini API (`google-generativeai`)
+- Деплой: Render (единый web-сервис, `render.yaml`)
