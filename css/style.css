@@ -192,13 +192,10 @@ img{max-width:100%;}
 
 /* Reusable trend arrow: up/down/flat, used in hero and AI-demo results */
 .trend-arrow{display:inline-flex; width:20px; height:20px; flex-shrink:0;}
-.trend-arrow svg{width:100%; height:100%; fill:none; stroke-width:2.6; stroke-linecap:round; stroke-linejoin:round;}
-.trend-arrow.trend-up svg{stroke:var(--green);}
-.trend-arrow.trend-up{animation:arrowRise 1.6s ease-in-out infinite;}
-.trend-arrow.trend-down svg{stroke:var(--red);}
-.trend-arrow.trend-down{animation:arrowFall 1.6s ease-in-out infinite;}
-.trend-arrow.trend-flat svg{stroke:var(--text-faint);}
-.trend-arrow.trend-flat{transform:rotate(90deg);}
+.trend-arrow svg{width:100%; height:100%; fill:currentColor; stroke:none;}
+.trend-arrow.trend-up{color:var(--green); animation:arrowRise 1.6s ease-in-out infinite;}
+.trend-arrow.trend-down{color:var(--red); animation:arrowFall 1.6s ease-in-out infinite;}
+.trend-arrow.trend-flat{color:var(--text-faint); transform:rotate(90deg);}
 @keyframes arrowRise{0%,100%{transform:translateY(0); opacity:.75;} 50%{transform:translateY(-5px); opacity:1;}}
 @keyframes arrowFall{0%,100%{transform:rotate(180deg) translateY(0); opacity:.75;} 50%{transform:rotate(180deg) translateY(-5px); opacity:1;}}
 
