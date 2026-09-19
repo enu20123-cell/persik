@@ -24,6 +24,40 @@ if (navToggle && mainNav) {
   }));
 }
 
+// Tabbed sections instead of one long scroll
+const tabPanels = document.querySelectorAll('.tab-panel');
+const tabControls = document.querySelectorAll('[data-tab]');
+
+function activateTab(id, { scroll = true } = {}) {
+  if (!id || !document.getElementById(id)) return;
+  tabPanels.forEach(panel => panel.classList.toggle('active', panel.id === id));
+  tabControls.forEach(el => {
+    const isActive = el.dataset.tab === id;
+    el.classList.toggle('active', isActive);
+    if (el.classList.contains('tab-btn')) el.setAttribute('aria-selected', String(isActive));
+  });
+  history.replaceState(null, '', '#tab-' + id);
+  if (scroll) {
+    const anchor = document.querySelector('.tabbar-wrap') || document.getElementById(id);
+    anchor?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+}
+
+if (tabPanels.length) {
+  tabControls.forEach(el => {
+    el.addEventListener('click', (e) => {
+      e.preventDefault();
+      activateTab(el.dataset.tab);
+    });
+  });
+
+  const requestedId = location.hash.replace(/^#(tab-)?/, '');
+  const initialId = [...tabPanels].some(p => p.id === requestedId)
+    ? requestedId
+    : tabPanels[0].id;
+  activateTab(initialId, { scroll: false });
+}
+
 // Reveal-on-scroll for sections/cards
 const revealTargets = document.querySelectorAll(
   '.card, .metric-card, .strategy-card, .journey li, .hero-visual, .quote-block'

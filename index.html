@@ -22,13 +22,13 @@
       <span>Education <em>Portfolio</em> AI</span>
     </a>
     <nav class="main-nav" aria-label="Основная навигация">
-      <a href="#problem">Проблема</a>
-      <a href="#assets">Активы</a>
-      <a href="#metrics">Метрики</a>
-      <a href="#journey">Путь пользователя</a>
-      <a href="#demo">AI-демо</a>
-      <a href="#strategies">Стратегии</a>
-      <a href="#why">Почему это работает</a>
+      <a href="#problem" data-tab="problem">Проблема</a>
+      <a href="#assets" data-tab="assets">Активы</a>
+      <a href="#metrics" data-tab="metrics">Метрики</a>
+      <a href="#journey" data-tab="journey">Путь пользователя</a>
+      <a href="#demo" data-tab="demo">AI-демо</a>
+      <a href="#strategies" data-tab="strategies">Стратегии</a>
+      <a href="#why" data-tab="why">Почему это работает</a>
     </nav>
     <a class="btn btn-ghost nav-cta" href="#cta">Собрать портфель</a>
     <button class="nav-toggle" id="navToggle" aria-label="Открыть меню" aria-expanded="false">
@@ -44,14 +44,15 @@
     <div class="hero-copy">
       <p class="eyebrow">AI-платформа для абитуриентов и родителей</p>
       <h1>Образование — это не ставка.<br>Это <span class="grad-text">портфель</span>.</h1>
+      <p class="hero-slogan">Твоё будущее — только в твоих руках.</p>
       <p class="hero-lead">
         Education Portfolio переносит методологию управления инвестициями на планирование
         поступления и карьеры. Вместо одной рискованной ставки на «мечту-ВУЗ» — сбалансированный
         набор активов с понятной стоимостью, риском и доходностью.
       </p>
       <div class="hero-actions">
-        <a href="#journey" class="btn btn-primary">Смотреть, как это работает</a>
-        <a href="#assets" class="btn btn-outline">Классы активов</a>
+        <a href="#journey" data-tab="journey" class="btn btn-primary">Смотреть, как это работает</a>
+        <a href="#assets" data-tab="assets" class="btn btn-outline">Классы активов</a>
       </div>
       <div class="hero-stats">
         <div class="stat"><span class="stat-num" data-count="4">0</span><span class="stat-label">класса активов</span></div>
@@ -61,28 +62,30 @@
     </div>
 
     <div class="hero-visual" aria-hidden="true">
-      <div class="panel portfolio-card">
+      <div class="panel portfolio-card growth-card">
         <div class="panel-head">
-          <span>Мой образовательный портфель</span>
+          <span>Рост шансов на поступление</span>
           <span class="pill pill-live">live</span>
         </div>
-        <div class="donut-wrap">
-          <svg viewBox="0 0 200 200" class="donut">
-            <circle cx="100" cy="100" r="80" class="donut-seg seg-core" pathLength="100" stroke-dasharray="35 65" stroke-dashoffset="0"></circle>
-            <circle cx="100" cy="100" r="80" class="donut-seg seg-growth" pathLength="100" stroke-dasharray="25 75" stroke-dashoffset="-35"></circle>
-            <circle cx="100" cy="100" r="80" class="donut-seg seg-highyield" pathLength="100" stroke-dasharray="20 80" stroke-dashoffset="-60"></circle>
-            <circle cx="100" cy="100" r="80" class="donut-seg seg-hedge" pathLength="100" stroke-dasharray="20 80" stroke-dashoffset="-80"></circle>
-          </svg>
-          <div class="donut-center">
-            <strong>72%</strong>
-            <span>Win Rate</span>
-          </div>
+        <div class="growth-headline">
+          <strong>72%</strong>
+          <span>Win Rate к 11 классу</span>
         </div>
-        <ul class="legend">
-          <li><i class="dot dot-core"></i>Базовые ВУЗы <b>35%</b></li>
-          <li><i class="dot dot-growth"></i>Стажировки/проекты <b>25%</b></li>
-          <li><i class="dot dot-highyield"></i>Олимпиады <b>20%</b></li>
-          <li><i class="dot dot-hedge"></i>Курсы/сертификаты <b>20%</b></li>
+        <div class="growth-chart-wrap">
+          <svg viewBox="0 0 320 170" class="growth-chart" preserveAspectRatio="none">
+            <line x1="0" y1="40" x2="320" y2="40" class="grid-line"></line>
+            <line x1="0" y1="80" x2="320" y2="80" class="grid-line"></line>
+            <line x1="0" y1="120" x2="320" y2="120" class="grid-line"></line>
+            <polyline class="growth-area" points="0,150 0,132 80,110 160,78 240,42 320,14 320,150"></polyline>
+            <polyline class="growth-line" points="0,132 80,110 160,78 240,42 320,14"></polyline>
+            <circle cx="320" cy="14" r="5" class="growth-dot"></circle>
+          </svg>
+        </div>
+        <ul class="growth-axis">
+          <li>9 класс</li>
+          <li>Активы</li>
+          <li>Портфель</li>
+          <li>11 класс</li>
         </ul>
       </div>
 
@@ -96,11 +99,38 @@
         <div class="risk-bar"><span style="width:62%"></span></div>
         <span class="mini-sub">Международная олимпиада</span>
       </div>
+      <div class="panel float-card float-3 float-donut">
+        <div class="donut-wrap mini-donut-wrap">
+          <svg viewBox="0 0 200 200" class="donut">
+            <circle cx="100" cy="100" r="80" class="donut-seg seg-core" pathLength="100" stroke-dasharray="35 65" stroke-dashoffset="0"></circle>
+            <circle cx="100" cy="100" r="80" class="donut-seg seg-growth" pathLength="100" stroke-dasharray="25 75" stroke-dashoffset="-35"></circle>
+            <circle cx="100" cy="100" r="80" class="donut-seg seg-highyield" pathLength="100" stroke-dasharray="20 80" stroke-dashoffset="-60"></circle>
+            <circle cx="100" cy="100" r="80" class="donut-seg seg-hedge" pathLength="100" stroke-dasharray="20 80" stroke-dashoffset="-80"></circle>
+          </svg>
+        </div>
+        <span class="mini-label">Портфель активов</span>
+      </div>
     </div>
   </section>
 
+  <!-- TABS -->
+  <div class="tabbar-wrap">
+    <div class="container">
+      <div class="tabbar" role="tablist" aria-label="Разделы платформы">
+        <button class="tab-btn" data-tab="problem" role="tab" aria-selected="false" type="button">Проблема</button>
+        <button class="tab-btn" data-tab="assets" role="tab" aria-selected="false" type="button">Активы</button>
+        <button class="tab-btn" data-tab="metrics" role="tab" aria-selected="false" type="button">Метрики</button>
+        <button class="tab-btn" data-tab="journey" role="tab" aria-selected="false" type="button">Путь пользователя</button>
+        <button class="tab-btn" data-tab="demo" role="tab" aria-selected="false" type="button">AI-демо</button>
+        <button class="tab-btn" data-tab="strategies" role="tab" aria-selected="false" type="button">Стратегии</button>
+        <button class="tab-btn" data-tab="why" role="tab" aria-selected="false" type="button">Почему это работает</button>
+      </div>
+    </div>
+  </div>
+
   <!-- PROBLEM -->
-  <section id="problem" class="section">
+  <div id="problem" class="tab-panel" role="tabpanel" aria-label="Проблема">
+  <section class="section">
     <div class="container">
       <p class="section-tag">01 · Проблематика</p>
       <h2>Поступление превратилось в информационный хаос</h2>
@@ -146,9 +176,10 @@
       </div>
     </div>
   </section>
+  </div>
 
   <!-- ASSETS -->
-  <section id="assets" class="section">
+  <section id="assets" class="section tab-panel" role="tabpanel">
     <div class="container">
       <p class="section-tag">03 · Классификация активов</p>
       <h2>Четыре класса образовательных активов</h2>
@@ -215,7 +246,7 @@
   </section>
 
   <!-- METRICS -->
-  <section id="metrics" class="section section-dark">
+  <section id="metrics" class="section section-dark tab-panel" role="tabpanel">
     <div class="container">
       <p class="section-tag">04 · AI-аналитика</p>
       <h2>4 инвестиционные метрики для каждого актива</h2>
@@ -247,7 +278,7 @@
   </section>
 
   <!-- USER JOURNEY -->
-  <section id="journey" class="section">
+  <section id="journey" class="section tab-panel" role="tabpanel">
     <div class="container">
       <p class="section-tag">05 · User Journey</p>
       <h2>Путь пользователя внутри портфеля</h2>
@@ -308,7 +339,7 @@
   </section>
 
   <!-- DEMO -->
-  <section id="demo" class="section">
+  <section id="demo" class="section tab-panel" role="tabpanel">
     <div class="container">
       <p class="section-tag">05.5 · AI-демо</p>
       <h2>Инвесторская анкета: соберите портфель прямо сейчас</h2>
@@ -359,7 +390,7 @@
   </section>
 
   <!-- STRATEGIES -->
-  <section id="strategies" class="section section-dark">
+  <section id="strategies" class="section section-dark tab-panel" role="tabpanel">
     <div class="container">
       <p class="section-tag">06 · Сравнение стратегий</p>
       <h2>Одна цель — разные конструкции портфеля</h2>
@@ -398,7 +429,7 @@
   </section>
 
   <!-- WHY -->
-  <section id="why" class="section">
+  <section id="why" class="section tab-panel" role="tabpanel">
     <div class="container">
       <p class="section-tag">07 · Почему это работает</p>
       <h2>Почему идея эффективна для хакатона и продукта</h2>
@@ -446,10 +477,10 @@
       <p>Образование как инвест-портфель. Проект для хакатона, 2026.</p>
     </div>
     <div class="footer-links">
-      <a href="#problem">Проблема</a>
-      <a href="#assets">Активы</a>
-      <a href="#journey">Путь пользователя</a>
-      <a href="#why">Почему это работает</a>
+      <a href="#problem" data-tab="problem">Проблема</a>
+      <a href="#assets" data-tab="assets">Активы</a>
+      <a href="#journey" data-tab="journey">Путь пользователя</a>
+      <a href="#why" data-tab="why">Почему это работает</a>
     </div>
   </div>
 </footer>
