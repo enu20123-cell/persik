@@ -1,19 +1,18 @@
 import json
 import os
 import re
+import time
 
+import requests
 from dotenv import load_dotenv
 from flask import Flask, jsonify, request, send_from_directory
 from flask_cors import CORS
 
-import google.generativeai as genai
-
 load_dotenv()
 
 API_KEY = os.environ.get("GEMINI_API_KEY")
-if API_KEY:
-    genai.configure(api_key=API_KEY)
 MODEL_NAME = os.environ.get("GEMINI_MODEL", "gemini-flash-latest")
+GEMINI_URL = f"https://generativelanguage.googleapis.com/v1beta/models/{MODEL_NAME}:generateContent"
 
 FRONTEND_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 
@@ -69,6 +68,30 @@ def extract_json(text: str) -> dict:
     return json.loads(text)
 
 
+def call_gemini(prompt: str) -> str:
+    # thinkingBudget=0 disables extended reasoning: it isn't needed for this
+    # structured-JSON task, and Render's ~30s proxy timeout would otherwise
+    # kill the request before a "thinking" response finishes (it was taking 30s+).
+    attempts = 3
+    for attempt in range(attempts):
+        resp = requests.post(
+            GEMINI_URL,
+            params={"key": API_KEY},
+            json={
+                "contents": [{"parts": [{"text": prompt}]}],
+                "generationConfig": {"thinkingConfig": {"thinkingBudget": 0}},
+            },
+            timeout=15,
+        )
+        # Gemini's shared endpoints occasionally 503/429 under load; retrying
+        # briefly clears most of these without risking Render's ~30s timeout.
+        if resp.status_code in (429, 503) and attempt < attempts - 1:
+            time.sleep(1 + attempt)
+            continue
+        resp.raise_for_status()
+        return resp.json()["candidates"][0]["content"]["parts"][0]["text"]
+
+
 @app.route("/api/analyze", methods=["POST"])
 def analyze():
     if not API_KEY:
@@ -84,12 +107,15 @@ def analyze():
     prompt = PROMPT_TEMPLATE.format(**profile)
 
     try:
-        model = genai.GenerativeModel(MODEL_NAME)
-        response = model.generate_content(prompt)
-        data = extract_json(response.text)
-    except (json.JSONDecodeError, ValueError) as exc:
+        text = call_gemini(prompt)
+        data = extract_json(text)
+    except (json.JSONDecodeError, ValueError, KeyError, IndexError) as exc:
         return jsonify({"error": f"Model returned invalid JSON: {exc}"}), 502
-    except Exception as exc:  # network / auth / quota errors from the Gemini SDK
+    except requests.HTTPError as exc:
+        if exc.response is not None and exc.response.status_code == 429:
+            return jsonify({"error": "Gemini API rate limit reached. Подождите минуту и попробуйте снова."}), 429
+        return jsonify({"error": f"Gemini request failed: {exc}"}), 502
+    except requests.RequestException as exc:
         return jsonify({"error": f"Gemini request failed: {exc}"}), 502
 
     return jsonify(data)

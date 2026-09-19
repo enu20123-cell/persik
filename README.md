@@ -50,5 +50,5 @@ python app.py                   # поднимется на http://localhost:500
 ## Стек
 
 - Frontend: чистые HTML / CSS / JS, без сборщиков и внешних библиотек
-- Backend: Python (Flask + gunicorn) + Gemini API (`google-generativeai`)
+- Backend: Python (Flask + gunicorn) + Gemini API (прямые REST-запросы через `requests`, thinking отключён для скорости)
 - Деплой: Render (единый web-сервис, `render.yaml`)
