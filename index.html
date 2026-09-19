@@ -28,6 +28,7 @@
       <a href="#journey" data-tab="journey">Путь пользователя</a>
       <a href="#demo" data-tab="demo">AI-демо</a>
       <a href="#strategies" data-tab="strategies">Стратегии</a>
+      <a href="#persik" data-tab="persik">Персик-экономика</a>
       <a href="#why" data-tab="why">Почему это работает</a>
     </nav>
     <a class="btn btn-ghost nav-cta" href="#cta">Собрать портфель</a>
@@ -44,7 +45,7 @@
     <div class="hero-copy">
       <p class="eyebrow">AI-платформа для абитуриентов и родителей</p>
       <h1>Образование — это не ставка.<br>Это <span class="grad-text">портфель</span>.</h1>
-      <p class="hero-slogan">Твоё будущее — только в твоих руках.</p>
+      <p class="hero-slogan">Инвестируй в своё будущее.</p>
       <p class="hero-lead">
         Education Portfolio переносит методологию управления инвестициями на планирование
         поступления и карьеры. Вместо одной рискованной ставки на «мечту-ВУЗ» — сбалансированный
@@ -68,6 +69,7 @@
           <span class="pill pill-live">live</span>
         </div>
         <div class="growth-headline">
+          <span class="trend-arrow trend-up" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 21 L12 3 M5 10 L12 3 L19 10"></path></svg></span>
           <strong>72%</strong>
           <span>Win Rate к 11 классу</span>
         </div>
@@ -123,6 +125,7 @@
         <button class="tab-btn" data-tab="journey" role="tab" aria-selected="false" type="button">Путь пользователя</button>
         <button class="tab-btn" data-tab="demo" role="tab" aria-selected="false" type="button">AI-демо</button>
         <button class="tab-btn" data-tab="strategies" role="tab" aria-selected="false" type="button">Стратегии</button>
+        <button class="tab-btn" data-tab="persik" role="tab" aria-selected="false" type="button">Персик-экономика</button>
         <button class="tab-btn" data-tab="why" role="tab" aria-selected="false" type="button">Почему это работает</button>
       </div>
     </div>
@@ -378,6 +381,10 @@
             <label for="target_field">Целевая специальность</label>
             <input id="target_field" name="target_field" type="text" placeholder="Computer Science" required>
           </div>
+          <div class="form-row form-row-full">
+            <label for="achievements">Достижения (олимпиады, сертификаты, проекты)</label>
+            <input id="achievements" name="achievements" type="number" min="0" step="1" placeholder="2" value="0">
+          </div>
           <button type="submit" class="btn btn-primary" id="analyzeBtn">Проанализировать портфель</button>
           <p class="demo-hint" id="demoHint">Запрос уходит на <code>/api/analyze</code> того же сервера.</p>
         </form>
@@ -428,10 +435,46 @@
     </div>
   </section>
 
+  <!-- PERSIK ECONOMY -->
+  <section id="persik" class="section tab-panel" role="tabpanel">
+    <div class="container">
+      <p class="section-tag">07 · Персик-экономика</p>
+      <h2>Персик 🍑 — твоя внутренняя валюта прогресса</h2>
+      <p class="section-lead">
+        Каждый доллар бюджета и каждое достижение конвертируются в Персики — наглядный способ
+        увидеть, как растёт твой инвестиционный капитал, а ИИ следит, растут твои «акции» или падают.
+      </p>
+
+      <div class="grid grid-3">
+        <div class="card">
+          <div class="card-icon">💰</div>
+          <h3>Бюджет → Персики</h3>
+          <p>Каждые <b>$50</b> заявленного бюджета превращаются в <b>1 Персик</b> стартового капитала твоего портфеля.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">🏅</div>
+          <h3>Достижения → бонус</h3>
+          <p>Каждая олимпиада, сертификат или проект в анкете добавляет <b>+120 Персиков</b> — портфель растёт не только деньгами.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">📈</div>
+          <h3>ИИ отслеживает тренд</h3>
+          <p>При повторном анализе ИИ сравнивает Win Rate с прошлым разом и показывает стрелкой, растут твои «акции» или снижаются.</p>
+        </div>
+      </div>
+
+      <div class="explain-box">
+        <span class="explain-icon">🍑</span>
+        <p><strong>Как это выглядит:</strong> открой вкладку <em>AI-демо</em>, заполни бюджет и число достижений —
+        после анализа появится твой Персик-баланс и стрелка динамики.</p>
+      </div>
+    </div>
+  </section>
+
   <!-- WHY -->
   <section id="why" class="section tab-panel" role="tabpanel">
     <div class="container">
-      <p class="section-tag">07 · Почему это работает</p>
+      <p class="section-tag">08 · Почему это работает</p>
       <h2>Почему идея эффективна для хакатона и продукта</h2>
 
       <div class="grid grid-4">
